@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx6nabf44rfab"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_17r84"]
+[ext_resource type="Texture2D" uid="uid://den75aqhodmmx" path="res://planeSprites/US_p47.png" id="1_i4eu6"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_17r84")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i4eu6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(11, 18, 4, 16, 4, 3, 16, 3, 25, -1, 28, -5, 24, -6, 17.563, -6, 14, -6, 4, -7, 4, -15, 6, -17, 0, -17, -5, -17, -4, -15, -4, -7, -23, -7, -26, -4, -24, 0, -18, 2, -3, 3, -2, 16, -9, 19, -8, 22, -3, 23, -1, 21, 0, 24, 1, 22, 5, 23, 9, 22)
