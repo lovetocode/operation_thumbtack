@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://chxss65sharc"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_kq53t"]
+[ext_resource type="Texture2D" uid="uid://bgu73hji17as" path="res://assets/planeSprites/GER_bf109.png" id="2_cfsik"]
+
+[node name="Enemy" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_kq53t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("2_cfsik")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20, 3, 20, 0, 13, 0, 7, -1, 3, -2, 2, -7, 1, -7, 1, -15, 6, -15, 6, -18, 2, -19, 1, -18, 0, -20, -1, -20, -2, -19, -7, -19, -7, -17, -6, -16, -3, -15, -2, -7, -3, -7, -3, -3, -8, -2, -14, -1, -21, 0, -21, 5, -4, 6, -3, 11, -6, 12, -6, 13, -2, 13, -1, 15, 1, 14, 5, 13, 6, 12, 2, 11, 2, 6, 19, 6)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -28)
+scale = Vector2(0.4, 0.45)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

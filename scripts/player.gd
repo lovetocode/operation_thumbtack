@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name player extends CharacterBody2D
 
 @export var speed = 300
 @onready var rate_of_fire = 0.25
@@ -29,3 +29,6 @@ func _physics_process(delta):
 func shoot():
 	bullet_shot.emit(bullet_scene, left_muzzle.global_position)
 	bullet_shot.emit(bullet_scene, right_muzzle.global_position)
+	
+func die():
+	queue_free()
