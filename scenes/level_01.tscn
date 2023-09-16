@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmkx4c8e104rp"]
+[gd_scene load_steps=4 format=3 uid="uid://bmkx4c8e104rp"]
 
 [ext_resource type="Script" path="res://scripts/level_01.gd" id="1_sk33t"]
 [ext_resource type="PackedScene" uid="uid://cx6nabf44rfab" path="res://scenes/player.tscn" id="2_4xi51"]
+[ext_resource type="PackedScene" uid="uid://cxucv8w8gwu56" path="res://scenes/bullet.tscn" id="3_1bnmg"]
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_sk33t")
 
 [node name="Player" parent="." instance=ExtResource("2_4xi51")]
+position = Vector2(51, 88)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
 position = Vector2(270, 750)
+
+[node name="Laser" parent="." instance=ExtResource("3_1bnmg")]
+
+[node name="BulletContainer" type="Node2D" parent="."]
