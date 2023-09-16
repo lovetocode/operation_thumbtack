@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 300
-
+@onready var rate_of_fire = 0.25
 
 signal bullet_shot(bullet_scene, location)
 
@@ -17,7 +17,7 @@ func _process(delta):
 		if !shoot_cd:
 			shoot_cd = true
 			shoot()
-			await get_tree().create_timer(0.25).timeout
+			await get_tree().create_timer(rate_of_fire).timeout
 			shoot_cd = false
 
 func _physics_process(delta):
