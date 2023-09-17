@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ied6crjgis8h"]
+
+[ext_resource type="PackedScene" uid="uid://chxss65sharc" path="res://scenes/enemy.tscn" id="1_i4y5w"]
+[ext_resource type="Texture2D" uid="uid://d6xo8ks1iujj" path="res://assets/planeSprites/JAP_a6m.png" id="2_peidk"]
+
+[node name="Japan" instance=ExtResource("1_i4y5w")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_peidk")

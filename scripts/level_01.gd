@@ -2,6 +2,10 @@ extends Node2D
 
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var bullet_container = $BulletContainer
+@onready var enemy_container = $EnemyContainer
+@onready var timer = $EnemySpawnTimer
+
+@export var enemy_scenes: Array[PackedScene] = []
 
 var player = null
 
@@ -21,3 +25,8 @@ func _on_bullet_shot(bullet_scene, location):
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = location
 	bullet_container.add_child(bullet)
+
+func _on_timer_timeout():
+	var e = enemy_scenes.pick_random().instantiate()
+	e.global_position = Vector2(randf_range(50,500), -50)
+	enemy_container.add_child(e)
