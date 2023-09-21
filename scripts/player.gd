@@ -5,8 +5,12 @@ class_name player extends CharacterBody2D
 
 signal bullet_shot(bullet_scene, location)
 
-@onready var left_muzzle = $LeftMuzzle
-@onready var right_muzzle = $RightMuzzle
+@onready var left_inside_muzzle = $LeftInsideMuzzle
+@onready var left_middle_muzzle = $LeftMiddleMuzzle
+@onready var left_outside_muzzle = $LeftOutsideMuzzle
+@onready var right_inside_muzzle = $RightInsideMuzzle
+@onready var right_middle_muzzle = $RightMiddleMuzzle
+@onready var right_outside_muzzle = $RightOutsideMuzzle
 
 var shoot_cd = false
  
@@ -27,8 +31,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 func shoot():
-	bullet_shot.emit(bullet_scene, left_muzzle.global_position)
-	bullet_shot.emit(bullet_scene, right_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, left_inside_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, left_middle_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, left_outside_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, right_inside_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, right_middle_muzzle.global_position)
+	bullet_shot.emit(bullet_scene, right_outside_muzzle.global_position)
 	
 func die():
 	queue_free()
