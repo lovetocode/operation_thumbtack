@@ -32,11 +32,8 @@ func _physics_process(delta):
 
 func shoot():
 	bullet_shot.emit(bullet_scene, left_inside_muzzle.global_position)
-	bullet_shot.emit(bullet_scene, left_middle_muzzle.global_position)
-	bullet_shot.emit(bullet_scene, left_outside_muzzle.global_position)
 	bullet_shot.emit(bullet_scene, right_inside_muzzle.global_position)
-	bullet_shot.emit(bullet_scene, right_middle_muzzle.global_position)
-	bullet_shot.emit(bullet_scene, right_outside_muzzle.global_position)
+	
 	
 func die():
 	queue_free()

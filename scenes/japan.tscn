@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d6xo8ks1iujj" path="res://assets/planeSprites/JAP_a6m.png" id="2_peidk"]
 
 [node name="Japan" instance=ExtResource("1_i4y5w")]
+hp = 2
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_peidk")
