@@ -5,6 +5,7 @@
 
 [node name="Japan" instance=ExtResource("1_i4y5w")]
 hp = 2
+points = 200
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_peidk")

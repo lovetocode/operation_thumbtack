@@ -29,6 +29,8 @@ func _physics_process(delta):
 	Input.get_axis("move_up", "move_down"))
 	velocity = direction * speed
 	move_and_slide()
+	
+	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
 
 func shoot():
 	bullet_shot.emit(bullet_scene, left_inside_muzzle.global_position)
