@@ -5,6 +5,7 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var timer = $EnemySpawnTimer
 @onready var hud = $UILayer/HUD
+@onready var gos = $UILayer/GameOverScreen
 
 @export var enemy_scenes: Array[PackedScene] = []
 
@@ -13,13 +14,22 @@ var score := 0:
 	set(value):
 		score = value
 		hud.score = score
+var high_score = 0
 
 func _ready():
+	var save_file = FileAccess.open("user://save.data", FileAccess.READ)
+	if save_file != null:
+		high_score = save_file.get_32()
+	else:
+		high_score = 0
+		save_game()
 	score = 0
 	player = get_tree().get_first_node_in_group("player")
 	assert(player!=null)
 	player.global_position = player_spawn_pos.global_position
 	player.bullet_shot.connect(_on_bullet_shot)
+	player.killed.connect(_on_player_killed)
+	
 	
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
@@ -41,3 +51,14 @@ func _on_timer_timeout():
 func _on_enemy_killed(points):
 	score += points
 	
+func _on_player_killed():
+	await get_tree().create_timer(1.5).timeout
+	gos.set_score(score)
+	gos.set_high_score(high_score)
+	save_game()
+	get_tree().paused = true
+	gos.visible = true
+	
+func save_game():
+	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE)
+	save_file.store_32(high_score)

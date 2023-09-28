@@ -4,6 +4,7 @@ class_name player extends CharacterBody2D
 @onready var rate_of_fire = 0.25
 
 signal bullet_shot(bullet_scene, location)
+signal killed
 
 @onready var left_inside_muzzle = $LeftInsideMuzzle
 @onready var left_middle_muzzle = $LeftMiddleMuzzle
@@ -38,4 +39,5 @@ func shoot():
 	
 	
 func die():
+	killed.emit()
 	queue_free()
