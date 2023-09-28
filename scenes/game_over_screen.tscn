@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv2tsgg0rjq61"]
+[gd_scene load_steps=5 format=3 uid="uid://bv2tsgg0rjq61"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_apu1h"]
+[ext_resource type="FontFile" uid="uid://dhlxjnmy045wo" path="res://assets/Font/Top Secret.ttf" id="2_3juw3"]
+[ext_resource type="FontFile" uid="uid://dchotfwgm3xak" path="res://assets/Font/Capture it.ttf" id="3_fwhh6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2ejd"]
-bg_color = Color(0.427451, 0.470588, 0.2, 1)
+bg_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -22,16 +24,16 @@ offset_right = 502.0
 offset_bottom = 756.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.294118, 0.32549, 0.12549, 0.490196)
+color = Color(0.227451, 0.270588, 0.0666667, 0.431373)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
+offset_left = 22.0
 offset_top = 148.0
-offset_right = 439.0
+offset_right = 476.0
 offset_bottom = 486.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -43,25 +45,28 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -123.5
-offset_top = 27.0
-offset_right = 148.5
-offset_bottom = -279.0
+offset_left = -198.5
+offset_top = 26.0
+offset_right = 204.5
+offset_bottom = -273.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.698039, 0.0627451, 0.105882, 1)
+theme_override_fonts/font = ExtResource("2_3juw3")
+theme_override_font_sizes/font_size = 70
 text = "Game Over
 "
 horizontal_alignment = 1
 
 [node name="HighScore" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = 103.0
-offset_right = 435.0
-offset_bottom = 188.0
-theme_override_font_sizes/font_size = 50
-text = "High-Score: 999"
+offset_left = 26.0
+offset_top = 123.0
+offset_right = 464.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("3_fwhh6")
+theme_override_font_sizes/font_size = 45
+text = "High-Score: 99999"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="Panel"]
@@ -69,25 +74,44 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -152.5
-offset_top = 165.0
-offset_right = 143.5
-offset_bottom = 251.0
+offset_left = -195.0
+offset_top = 173.0
+offset_right = 180.0
+offset_bottom = 259.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fwhh6")
 theme_override_font_sizes/font_size = 60
-text = "Score: 999"
+text = "Score: 99999"
 horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 265.0
-offset_right = 341.0
-offset_bottom = 356.0
-theme_override_colors/font_color = Color(0.294118, 0.32549, 0.12549, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.607843, 0.607843, 0.607843, 1)
-theme_override_colors/font_outline_color = Color(0.878431, 0.92549, 0.678431, 1)
-theme_override_font_sizes/font_size = 60
-text = "Retry"
+[node name="Retry" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.5
+offset_top = 256.0
+offset_right = 214.5
+offset_bottom = 314.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.956863, 0.768627, 0.188235, 1)
+theme_override_fonts/font = ExtResource("3_fwhh6")
+theme_override_font_sizes/font_size = 40
+text = "Press r to Retry"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
+[node name="Quit" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.5
+offset_top = 306.0
+offset_right = 157.5
+offset_bottom = 392.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.956863, 0.768627, 0.188235, 1)
+theme_override_fonts/font = ExtResource("3_fwhh6")
+theme_override_font_sizes/font_size = 43
+text = "Press q to Quit"
+horizontal_alignment = 1

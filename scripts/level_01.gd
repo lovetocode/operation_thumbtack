@@ -50,13 +50,16 @@ func _on_timer_timeout():
 	
 func _on_enemy_killed(points):
 	score += points
+	if score > high_score:
+		high_score = score
+		
 	
 func _on_player_killed():
 	await get_tree().create_timer(1.5).timeout
 	gos.set_score(score)
 	gos.set_high_score(high_score)
 	save_game()
-	get_tree().paused = true
+	get_tree().paused = false
 	gos.visible = true
 	
 func save_game():
