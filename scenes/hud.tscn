@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3wnrd2mpx2cu"]
+[gd_scene load_steps=4 format=3 uid="uid://c3wnrd2mpx2cu"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_2dlf8"]
+[ext_resource type="FontFile" uid="uid://dchotfwgm3xak" path="res://assets/Font/Capture it.ttf" id="2_hifff"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qagk1"]
 font_size = 48
@@ -20,7 +21,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Score: 999"
+theme_override_fonts/font = ExtResource("2_hifff")
+text = "Score: 9999"
 label_settings = SubResource("LabelSettings_qagk1")
 horizontal_alignment = 1
 vertical_alignment = 1
