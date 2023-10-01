@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmkx4c8e104rp"]
+[gd_scene load_steps=16 format=3 uid="uid://bmkx4c8e104rp"]
 
 [ext_resource type="Script" path="res://scripts/level_01.gd" id="1_sk33t"]
 [ext_resource type="PackedScene" uid="uid://cx6nabf44rfab" path="res://scenes/player.tscn" id="2_4xi51"]
@@ -6,12 +6,60 @@
 [ext_resource type="Texture2D" uid="uid://dpkhu1mfw02th" path="res://background.jpg" id="4_5cig3"]
 [ext_resource type="PackedScene" uid="uid://c3wnrd2mpx2cu" path="res://scenes/hud.tscn" id="4_5ived"]
 [ext_resource type="PackedScene" uid="uid://chxss65sharc" path="res://scenes/enemy.tscn" id="4_crr7g"]
+[ext_resource type="AudioStream" uid="uid://doffoopnj21p8" path="res://assets/sounds/Retro Gun SingleShot 04.wav" id="4_jji4x"]
+[ext_resource type="AudioStream" uid="uid://bvqipcijsts7v" path="res://assets/sounds/Retro Music - WolfSynth - Tempo Normal - 02.wav" id="5_7p1bm"]
+[ext_resource type="Texture2D" uid="uid://dln5icutgpeb1" path="res://assets/Effects/star2.png" id="5_b5vp6"]
 [ext_resource type="PackedScene" uid="uid://bv2tsgg0rjq61" path="res://scenes/game_over_screen.tscn" id="5_eewtf"]
 [ext_resource type="PackedScene" uid="uid://ied6crjgis8h" path="res://scenes/japan.tscn" id="5_jyxws"]
+[ext_resource type="AudioStream" uid="uid://cxqi10b6reaa8" path="res://assets/sounds/Retro Impact Metal 36.wav" id="5_ukmwx"]
+[ext_resource type="AudioStream" uid="uid://1qqc3gmdjwqp" path="res://assets/sounds/Retro Negative Long 12.wav" id="6_1ro8g"]
+[ext_resource type="AudioStream" uid="uid://dx30b23hsoya5" path="res://assets/sounds/Game Over.wav" id="6_m4h1q"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndk0x"]
+emission_shape = 3
+emission_box_extents = Vector3(270, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -1000.0
+initial_velocity_max = -1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.3
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_sk33t")
 enemy_scenes = Array[PackedScene]([ExtResource("4_crr7g"), ExtResource("5_jyxws")])
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Bullet_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_jji4x")
+pitch_scale = 0.7
+
+[node name="WolfSynth_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_7p1bm")
+volume_db = -20.0
+pitch_scale = 0.7
+
+[node name="Explode_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_jji4x")
+pitch_scale = 0.2
+
+[node name="Hit_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_ukmwx")
+volume_db = -10.0
+
+[node name="Negative_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_1ro8g")
+volume_db = -10.0
+
+[node name="Game_over_sound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_m4h1q")
+volume_db = -10.0
+pitch_scale = 0.6
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -24,6 +72,14 @@ texture = ExtResource("4_5cig3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 540, 800)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(250, -50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_ndk0x")
+texture = ExtResource("5_b5vp6")
+lifetime = 1.25
+preprocess = 5.0
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
